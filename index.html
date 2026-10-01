@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#17120f">
+  <meta name="description" content="A pocket-sized, 808-inspired drum machine. Make a beat, then press play.">
+  <title>808 pocket — drum machine</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <main class="machine">
+    <header class="topline">
+      <a class="wordmark" href="./" aria-label="808 pocket home"><span class="wordmark-mark">●</span> pocket rhythm lab</a>
+      <span class="live-tag"><span class="live-dot"></span> IN THE BOX</span>
+    </header>
+
+    <section class="hero" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A tiny drum machine</p>
+        <h1 id="page-title">Make a little<br><span>noise.</span></h1>
+        <p class="intro">Eight classic voices. Sixteen little decisions. Your next loop starts here.</p>
+      </div>
+      <div class="visualizer-wrap" aria-hidden="true">
+        <canvas id="visualizer" width="640" height="300"></canvas>
+        <div class="visualizer-label"><span class="visualizer-dot"></span> LIVE OUTPUT <span id="visualizer-state">READY</span></div>
+      </div>
+    </section>
+
+    <section class="transport panel" aria-label="Playback controls">
+      <button class="play-button" id="play" type="button" aria-label="Play pattern" aria-pressed="false">
+        <svg class="play-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="m8 5 12 7-12 7z"/></svg>
+        <svg class="stop-icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="1.5"/></svg>
+        <span id="play-label">Play pattern</span>
+      </button>
+      <div class="tempo-control">
+        <label for="tempo">TEMPO</label>
+        <div class="tempo-readout"><input id="tempo" type="range" min="40" max="240" value="120" step="1"><output id="tempo-value" for="tempo">120</output><span>BPM</span></div>
+      </div>
+      <div class="transport-status" aria-live="polite">
+        <span class="status-indicator"></span>
+        <span id="status-text">Ready when you are</span>
+      </div>
+    </section>
+
+    <section class="sequencer panel" aria-labelledby="pattern-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 / Program</p>
+          <h2 id="pattern-title">Your pattern</h2>
+        </div>
+        <div class="pattern-actions">
+          <button class="text-button" id="clear" type="button">Clear all</button>
+          <button class="text-button" id="reset" type="button">Reset groove <span aria-hidden="true">↺</span></button>
+        </div>
+      </div>
+      <div class="step-head" aria-hidden="true">
+        <span class="step-head-label">VOICE / LEVEL</span>
+        <div class="step-numbers">
+          <span>1</span><span>2</span><span>3</span><span>4</span>
+          <span>5</span><span>6</span><span>7</span><span>8</span>
+          <span>9</span><span>10</span><span>11</span><span>12</span>
+          <span>13</span><span>14</span><span>15</span><span>16</span>
+        </div>
+      </div>
+      <div id="tracks" class="tracks" role="group" aria-label="16-step drum pattern"></div>
+      <div class="sequence-footer">
+        <span><span class="legend-dot active"></span> ON</span>
+        <span><span class="legend-dot"></span> OFF</span>
+        <span class="sequence-hint">Tap a step to switch it</span>
+      </div>
+    </section>
+
+    <section class="mixer panel" aria-labelledby="mixer-title">
+      <div class="section-heading mixer-heading">
+        <div>
+          <p class="eyebrow">02 / Shape</p>
+          <h2 id="mixer-title">Voice controls</h2>
+        </div>
+        <p class="mixer-note">Set levels and tune tonal voices by semitone.</p>
+      </div>
+      <div id="mixer" class="mixer-grid"></div>
+    </section>
+
+    <footer class="footer">
+      <span>MADE FOR THE IN-BETWEEN</span>
+      <span>NO SAVE BUTTON. JUST PLAY.</span>
+    </footer>
+  </main>
+  <script src="app.js"></script>
+</body>
+</html>
